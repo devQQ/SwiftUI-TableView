@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftUIToolbox",
+        "repositoryURL": "https://github.com/devQQ/SwiftUIToolbox",
+        "state": {
+          "branch": null,
+          "revision": "573d3db375bd3a0c6e818bb0e9f1781cf8d0cc3f",
+          "version": "1.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

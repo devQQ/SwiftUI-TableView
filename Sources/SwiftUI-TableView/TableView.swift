@@ -81,6 +81,7 @@ public struct TableView<Contents: RandomAccessCollection, Content: View>: UIView
     
     public func updateUIView(_ uiView: UITableView, context: Context) {
         context.coordinator.contents = contents
+        uiView.reloadData()
     }
     
     public func makeCoordinator() -> Coordinator {

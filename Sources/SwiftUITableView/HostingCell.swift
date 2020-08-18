@@ -1,6 +1,6 @@
 //
 //  HostingCell.swift
-//  
+//
 //
 //  Created by Q Trang on 7/20/20.
 //
@@ -21,9 +21,19 @@ public class HostingCell<Content: View>: UITableViewCell {
             
             guard hostingController == nil else {
                 hostingController?.rootView = content
+                
                 hostingController?.view.setNeedsLayout()
+                hostingController?.view.layoutIfNeeded()
+                
+                setNeedsUpdateConstraints()
+                updateConstraintsIfNeeded()
+                
                 hostingController?.view.setNeedsUpdateConstraints()
+                hostingController?.view.updateConstraintsIfNeeded()
+                
+                setNeedsDisplay()
                 hostingController?.view.setNeedsDisplay()
+
                 return
             }
             
@@ -45,6 +55,18 @@ public class HostingCell<Content: View>: UITableViewCell {
                                              view.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)])
             }
         }
+    }
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+        layoutIfNeeded()
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        layoutIfNeeded()
     }
 }
 

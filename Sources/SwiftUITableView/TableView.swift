@@ -1,6 +1,6 @@
 //
 //  TableView.swift
-//  
+//
 //
 //  Created by Q Trang on 7/20/20.
 //
@@ -82,6 +82,17 @@ public struct TableView<Contents: RandomAccessCollection, Content: View>: UIView
     public func updateUIView(_ uiView: UITableView, context: Context) {
         context.coordinator.contents = contents
         uiView.reloadData()
+
+        uiView.setNeedsLayout()
+        uiView.layoutIfNeeded()
+        
+        uiView.setNeedsUpdateConstraints()
+        uiView.updateConstraintsIfNeeded()
+        
+        UIView.performWithoutAnimation {
+            uiView.beginUpdates()
+            uiView.endUpdates()
+        }
     }
     
     public func makeCoordinator() -> Coordinator {
